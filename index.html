@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <title>Калькулятор</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="history-section">
+            <div class="history-panel-row">
+                <div class="header-history-panel">История расчетов</div>
+                <div class="btn-history-panel">
+                    <div class="copy-history"><i class="fa fa-clone" aria-hidden="true"></i></div>
+                    <div class="close-history-panel"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+            </div>
+            <div class="history-panel">
+                <ul class="history-list">
+
+                </ul>
+                <button class="delete"><i class="fa fa-trash-o"></i></button>
+            </div>
+        </div>
+        <div class="calc-wrap">
+            <div class="num_row">
+                <input type="text" id="num-1" class="num_input">
+                <input type="text" id="math-sign" class="num_input">
+                <input type="text" id="num-2" class="num_input">
+                <input type="text" id="math-result" class="num_input" value="=" >
+                <span class="result"></span>
+            </div>
+            <div class="btn_row">
+                <button  type="text" id="plus" value="+" class="btn">+</button>
+                <button type="text" id="minus" value="-" class="btn">-</button>
+                <button type="text" id="multiply" value="*" class="btn">*</button>
+                <button type="text" id="divide" value="/" class="btn">/</button>
+                <button type="text" id="result-btn">Результат</button>
+            </div>
+            <button type="text" id="clear">Очистить поля</button>
+            <button class="open-history-panel">История расчетов</button>
+        </div>
+    </div>
+
+<!--    <div id="drop-area">
+        <form class="my-form">
+            <p>Загрузите изображения с помощью диалога выбора файлов или перетащив нужные изображения в выделенную область</p>
+            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+            <label class="button" for="fileElem">Выбрать изображения</label>
+        </form>
+    </div>-->
+<script src="calc.js"></script>
+</body>
+</html>

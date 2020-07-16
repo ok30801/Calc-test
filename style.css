@@ -1,0 +1,214 @@
+body{
+    font-family: Roboto;
+}
+.container {
+    text-align: center;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+    padding-top: 150px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.calc-wrap {
+    border: 1px solid #e1dada;
+    width: 371px;
+    padding: 20px 20px 0 20px;
+    box-shadow: 1px 8px 30px 4px rgba(0,0,0,.1);
+}
+.heading-class {
+    color: #333;
+}
+#math-sign,
+#math-result {
+    width: 20px;
+    text-align: center;
+    border: 1px solid #cdcdcd;
+    height: 40px;
+    font-size: 1.3rem;
+}
+.num_row {
+    padding: 0 0 20px 0;
+    text-align: start;
+}
+.num_row input {
+    height: 22px;
+    border: 1px solid #cdcdcd;
+}
+.num_row input:hover {
+    height: 22px;
+    border: 1px solid #1277AB;
+}
+.num_row .num_input {
+    width: 98px;
+}
+.btn_row button {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.btn_row #result-btn {
+    width: 131px;
+}
+.result {
+    width: 88px;
+    height: 42px;
+    border: 1px solid #cdcdcd;
+    position: absolute;
+    margin-left: 5px;
+    display: inline-flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.num_row #num-1,
+#num-2 {
+    padding-left: 10px;
+    width: 89px;
+    height: 40px;
+    font-size: 1.3rem;
+
+}
+#clear,
+.open-history-panel {
+    height: 56px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    width: 370px;
+}
+
+.open-history-panel {
+    grid-column: 1/5;
+}
+.history-section {
+    position: absolute;
+    display: none;
+}
+.history-panel {
+    border: 1px solid #cdcdcd;
+    background: white;
+    box-shadow: 1px 8px 30px 4px rgba(0,0,0,.1);
+    padding: 0 10px 20px 20px;
+    margin: 0 auto;
+    max-height: 237px;
+    overflow: auto;
+}
+.history-panel-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #cdcdcd;
+    padding: 10px 20px;
+    border-bottom: none;
+}
+.header-history-panel {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.btn-history-panel {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    /*margin-right: 10px;*/
+}
+.close-history-panel {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #514e4e;
+    padding-left: 10px;
+}
+.close-history-panel:hover {
+    cursor: pointer;
+    color: orange;
+    transition: 0.2s;
+}
+.copy-history:hover {
+    cursor: pointer;
+    color: #2e6da4;
+    transition: 0.2s;
+}
+.history-list {
+    padding-right: 10px;
+}
+.list {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    margin-left: -40px;
+}
+.fa.fa-trash-o {
+    margin-left: 10px;
+}
+
+.close .fa:hover {
+    cursor: pointer;
+    color: #1B6D85;
+}
+.copy-done {
+    transform: rotate(90deg);
+    color: orange;
+    /*font-size: 1.3rem;*/
+}
+.delete {
+    height: 56px;
+    /*margin-bottom: 20px;*/
+    text-align: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    width: 285px;
+    margin-right: 10px;
+}
+/*************************** Drag-and-Drop *************************/
+
+note {
+    width: 500px;
+    margin: 50px auto;
+    font-size: 1.1em;
+    color: #333;
+    text-align: justify;
+}
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 480px;
+    margin: 50px auto;
+    padding: 20px;
+}
+#drop-area.highlight {
+    border-color: purple;
+}
+p {
+    margin-top: 0;
+}
+.my-form {
+    margin-bottom: 10px;
+}
+#gallery {
+    margin-top: 10px;
+}
+#gallery img {
+    width: 150px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.button {
+    display: inline-block;
+    padding: 10px;
+    background: #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.button:hover {
+    background: #ddd;
+}
+#fileElem {
+    display: none;
+}
