@@ -8,11 +8,9 @@ let numOne = document.querySelector('#num-1'),
     mathButtons = document.querySelectorAll('.btn'),
     closePanel = document.querySelector('.close-history-panel'),
     openHistory = document.querySelector('.open-history-panel'),
-    historyPanel = document.querySelector('.history-panel'),
+    historySection = document.querySelector('.history-section'),
     historyList = document.querySelector('.history-list'),
     copyHistory = document.querySelector('.copy-history');
-
-let historySection = document.querySelector('.history-section');
 
 // Отменяем выделение текста на кнопках математической оперции и (=)
 
@@ -23,7 +21,7 @@ mathResult.onmousedown = mathResult.onselectstart = function() {
     return false;
 }
 
-// Выводим знак математической операции при клике кнопок в поле (mathSign)
+// Вывод знака математической операции
 
 for(let i = 0; i < mathButtons.length; i++) {
     mathButtons[i].addEventListener('click', () => {
@@ -61,7 +59,6 @@ resultBtn.addEventListener('click', () => {
         result.innerHTML = +numOne.value * +numTwo.value;
     } else if(mathSign.value === '/') {
         result.innerHTML = (+numOne.value / +numTwo.value).toFixed(4);
-        /*alert(result.innerHTML.toFixed(3));*/
     }
 
     let mathObj = {
@@ -89,12 +86,10 @@ resultBtn.addEventListener('click', () => {
         result.style.background = "green";
         result.style.color = "white";
     }
-    /*if(result.innerHTML % 10 === 0) {
+    if(result.innerHTML % 10 == 0 && mathSign.value !== '-' && mathSign.value !== '+') {
         alert('test');
-    }else {
-        /!*alert('false');*!/
-    }*/
-})
+    }
+});
 
 function showHistory() {
 
@@ -126,7 +121,7 @@ deleteHistoryAll.addEventListener('click', () => {
     localStorage.clear();
     historyList.innerHTML = '';
     setTimeout(function () {
-        location.reload()
+        location.reload();
     }, 1000);
 });
 
@@ -144,22 +139,26 @@ copyHistory.addEventListener('click', () => {
             .then(() => copyHistory.classList.add('copy-done'));
 });
 
-// Drag-and-Drop
+// Загрузка данных из файла .txt
 
-// Удаление одиночной записи
+function processFiles(files) {
+    let file = files[0];
+    let reader = new FileReader();
+    reader.onload = function (e) {
+        let output = document.getElementById("fileOutput");
+        output.textContent = e.target.result;
 
-/*deleteHistoryItem = document.querySelectorAll('.fa-trash-o');
+        let oneNumber = output.textContent.slice(0, 1);
+        let mathSymbol = output.textContent.slice(2, 3);
+        let twoNumber = output.textContent.slice(4, 5)
+        numOne.value = oneNumber;
+        numTwo.value = twoNumber;
+        mathSign.value = mathSymbol;
+    };
+    reader.readAsText(file);
+}
 
-deleteHistoryItem.forEach((item, i) => {
-
-    item.addEventListener('click', (e) => {
-        if(e.target === item) {
-            computeArr.splice(i, 1);
-        }
-        localStorage.setItem('computeArr', JSON.stringify(computeArr));
-        location.reload();
-        showHistory();
-        localStorage.getItem(JSON.parse(computeArr))
-        historySection.style.display = 'block';
-    });
-});*/
+function showFileInput() {
+    let fileInput = document.getElementById("fileInput");
+    fileInput.click();
+}
