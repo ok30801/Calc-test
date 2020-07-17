@@ -38,6 +38,7 @@ clearBtn.addEventListener('click', () => {
     mathSign.value = '';
     mathSign.style.border = '1px solid #cdcdcd';
     result.innerHTML = '';
+    result.style.background = "white";
 })
 
 // Запись вычислений
@@ -86,7 +87,7 @@ resultBtn.addEventListener('click', () => {
         result.style.background = "green";
         result.style.color = "white";
     }
-    if(result.innerHTML % 10 == 0 && mathSign.value !== '-' && mathSign.value !== '+') {
+    if(result.innerHTML % 10 == 0 && result.innerHTML > 0) {
         alert('test');
     }
 });
@@ -147,13 +148,24 @@ function processFiles(files) {
     reader.onload = function (e) {
         let output = document.getElementById("fileOutput");
         output.textContent = e.target.result;
+        result.innerHTML = eval(dropBox.textContent);
 
-        let oneNumber = output.textContent.slice(0, 1);
-        let mathSymbol = output.textContent.slice(2, 3);
-        let twoNumber = output.textContent.slice(4, 5)
-        numOne.value = oneNumber;
-        numTwo.value = twoNumber;
-        mathSign.value = mathSymbol;
+        if(result.innerHTML < 0) {
+            result.style.background = 'red';
+            result.style.color = "white";
+        } else if(result.innerHTML == 0) {
+            result.style.background = "white";
+            result.style.color = "black";
+        } else if(result.innerHTML / Math.floor(+result.innerHTML) !==1 ) {
+            result.style.background = "yellow";
+            result.style.color = "black";
+        } else if(result.innerHTML > 0) {
+            result.style.background = "green";
+            result.style.color = "white";
+        }
+        if(result.innerHTML % 10 == 0 && result.innerHTML > 0) {
+            alert('test');
+        }
     };
     reader.readAsText(file);
 }
@@ -161,4 +173,55 @@ function processFiles(files) {
 function showFileInput() {
     let fileInput = document.getElementById("fileInput");
     fileInput.click();
+}
+
+// ************************ Drag and drop *****************
+
+let dropBox;
+
+window.onload = function() {
+    dropBox = document.getElementById("dropBox");
+    dropBox.ondragenter = ignoreDrag;
+    dropBox.ondragover = ignoreDrag;
+    dropBox.ondrop = drop;
+}
+function ignoreDrag(e) {
+    e.stopPropagation();
+    e.preventDefault();
+}
+function drop(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    let data = e.dataTransfer;
+    let files = data.files;
+
+    processFiles(files);
+}
+function processFiles(files) {
+    let file = files[0];
+    let reader = new FileReader();
+
+    reader.onload = function (e) {
+        dropBox.textContent = e.target.result;
+        result.innerHTML = eval(dropBox.textContent);
+
+        if(result.innerHTML < 0) {
+            result.style.background = 'red';
+            result.style.color = "white";
+        } else if(result.innerHTML == 0) {
+            result.style.background = "white";
+            result.style.color = "black";
+        } else if(result.innerHTML / Math.floor(+result.innerHTML) !==1 ) {
+            result.style.background = "yellow";
+            result.style.color = "black";
+        } else if(result.innerHTML > 0) {
+            result.style.background = "green";
+            result.style.color = "white";
+        }
+        if(result.innerHTML % 10 == 0 && result.innerHTML > 0) {
+            alert('test');
+        }
+    };
+    reader.readAsText(file);
 }
