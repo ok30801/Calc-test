@@ -41,17 +41,19 @@
                 <button type="text" id="result-btn">Результат</button>
             </div>
             <button type="text" id="clear">Очистить поля</button>
+            <input id="fileInput" type="file" size="50" onchange="processFiles(this.files)">
+            <div id="fileOutput"></div>
+            <button class="add-file" onclick="showFileInput()">Вставить данные из файла</button>
             <button class="open-history-panel">История расчетов</button>
         </div>
+
+        <div id="dropBox">
+            <div>Перетащите файл сюда...</div>
+        </div>
+        <input id="fileInput" type="file" onchange="processFiles(this.files)">
+        <img id="thumbnail">
     </div>
 
-<!--    <div id="drop-area">
-        <form class="my-form">
-            <p>Загрузите изображения с помощью диалога выбора файлов или перетащив нужные изображения в выделенную область</p>
-            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
-            <label class="button" for="fileElem">Выбрать изображения</label>
-        </form>
-    </div>-->
 <script src="calc.js"></script>
 </body>
 </html>
